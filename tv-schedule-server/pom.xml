@@ -10,8 +10,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>tv-schedule-server</artifactId>
-
     <packaging>war</packaging>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -44,10 +44,9 @@
             <artifactId>spring-boot-starter-integration</artifactId>
         </dependency>
         <dependency>
-            <groupId>pl.lkre.tv.schedule</groupId>
-            <artifactId>tv-schedule-web</artifactId>
-            <version>${project.version}</version>
-            <scope>runtime</scope>
+            <groupId>pl.lkre.tv</groupId>
+            <version>1.0</version>
+            <artifactId>tv-teleman-parser</artifactId>
         </dependency>
     </dependencies>
     <build>
@@ -90,11 +89,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <configuration>
-                    <packagingExcludes>WEB-INF/lib/tomcat-*.jar</packagingExcludes>
-                    <warName>tutorial-app</warName>
-                </configuration>
+<!--                <configuration>-->
+<!--                    <packagingExcludes>WEB-INF/lib/tomcat-*.jar</packagingExcludes>-->
+<!--                    <warName>tutorial-app</warName>-->
+<!--                </configuration>-->
             </plugin>
         </plugins>
     </build>
+
 </project>
