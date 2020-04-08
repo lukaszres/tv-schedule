@@ -19,7 +19,18 @@
     <modules>
         <module>tv-schedule-web</module>
         <module>tv-schedule-server</module>
+        <module>tv-persistance</module>
     </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>pl.lkre.tv</groupId>
+                <version>1.0</version>
+                <artifactId>tv-teleman-parser</artifactId>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 
 </project>

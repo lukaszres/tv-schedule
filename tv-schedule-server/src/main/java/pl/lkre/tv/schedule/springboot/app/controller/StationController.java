@@ -2,11 +2,13 @@ package pl.lkre.tv.schedule.springboot.app.controller;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import pl.lkre.tv.persistance.StorageService;
 import pl.lkre.tv.schedule.model.Station;
 import pl.lkre.tv.teleman.StationFactory;
 
@@ -19,6 +21,12 @@ import java.net.URL;
 @RequestMapping("/station")
 public class StationController {
 
+    private final StorageService storageService;
+
+    @Autowired
+    public StationController(StorageService storageService) {
+        this.storageService = storageService;
+    }
 
     @GetMapping
     @ResponseBody
@@ -38,6 +46,8 @@ public class StationController {
 
         final Document document = Jsoup.parse(stringBuilder.toString());
         final Station station = stationFactory.build(document);
+
+        storageService.save(station);
 
         return station.toString();
     }
